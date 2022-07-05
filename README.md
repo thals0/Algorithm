@@ -1,2 +1,2 @@
 # Beakjoon_sol
-Beakjoon solutions for Python
+Beakjoon solutions for Python 
