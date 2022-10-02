@@ -11,9 +11,9 @@ b.sort()
 c = a//2 
 
 # 산술평균
-print(round(sum(b)/a))
+# print(round(sum(b)/a))
 # 중앙값
-print(b[c])
+# print(b[c])
 
 # 최빈값
 # counts = dict()
@@ -42,6 +42,9 @@ print(b[c])
 #   print(counts[maxCount][1])
 
 cnt = Counter(b).most_common(2)
+
+print("Counter(b) = " ,Counter(b))
+print("Counter(b).most_common(2) =" , Counter(b).most_common())
 
 if len(b)>1 and cnt[0][1] == cnt[1][1]:
     print(cnt[1][0])
