@@ -3,6 +3,7 @@ stack=[]
 op = []
 cnt = 1
 temp = 0
+
 for i in range(n):
   num = int(input())
   while cnt <= num:
@@ -13,7 +14,7 @@ for i in range(n):
     stack.pop()
     op.append('-')
   else:
-    op.append('No')
+    print('NO')
     temp+=1
     break
 
