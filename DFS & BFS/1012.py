@@ -25,6 +25,7 @@ def bfs(graph, a, b):
 for i in range(t):
   cnt = 0
   n, m, k = map(int,input().split())
+  
   graph = [[0]*m for _ in range(n)]
   
   for j in range(k):
