@@ -1,12 +1,12 @@
 class Solution {
-    public long solution(int price, int money, int cnt) {
+    public long solution(long price, long money, long cnt) {
         long answer = 0;
         long sum = 0;
         for(int i=1; i<=cnt; i++){
-            sum += (long) (price * i);
+            sum += price * i;
         }
         if ((sum-money) > 0){
-            answer = (long) (sum-money);
+            answer = sum-money;
         } 
 
         return answer;
