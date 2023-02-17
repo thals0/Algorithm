@@ -6,7 +6,6 @@ class Solution {
                 char ch = s.charAt(i);
                 if ('a'<= ch && ch <= 'z' || 'A'<= ch && ch <= 'Z'){
                     answer = false;
-                    break;
                 }
             }
         } else{
