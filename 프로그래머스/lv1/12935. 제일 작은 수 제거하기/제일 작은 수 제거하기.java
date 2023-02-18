@@ -1,9 +1,9 @@
 class Solution {
     public int[] solution(int[] arr) {
-        int x = arr[0];
+        int min = arr[0];
         for(int i=0; i<arr.length; i++){
-            if(arr[i] < x){
-                x = arr[i];
+            if(arr[i] < min){
+                min = arr[i];
             } 
         }
         
@@ -16,7 +16,7 @@ class Solution {
         int index = 0;
         
         for(int i=0; i < arr.length; i++){
-            if (arr[i] == x){
+            if (arr[i] == min){
                 continue;
             } 
             ans[index++] = arr[i];
