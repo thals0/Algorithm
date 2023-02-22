@@ -1,13 +1,8 @@
 n,m = map(int, input().split())
-ans = set()
-cmd = []
+
+ans = set(input() for _ in range(n))
+cmd = [input() for _ in range(m)]
 cnt = 0
-
-for _ in range(n):
-  ans.add(input())
-
-for _ in range(m):
-  cmd.append(input())
 
 for i in ans:
   cnt += cmd.count(i)
