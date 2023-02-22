@@ -1,10 +1,8 @@
-n,m = map(int, input().split())
-
-ans = set(input() for _ in range(n))
-cmd = [input() for _ in range(m)]
+N, M = map(int, input().split())
+s = set([input() for _ in range(N)])
 cnt = 0
-
-for i in ans:
-  cnt += cmd.count(i)
-
+for _ in range(M):
+    t = input()
+    if t in s:
+        cnt += 1
 print(cnt)
