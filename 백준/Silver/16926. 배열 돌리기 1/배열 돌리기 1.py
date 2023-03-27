@@ -1,34 +1,39 @@
 import sys
 input = sys.stdin.readline
 
-N, M, R = map(int, input().split())
-arr = [list(map(int, input().split())) for _ in range(N)]
-move = [[1, 0], [0, 1], [-1, 0], [0, -1]]  
+n,m,r = map(int,input().split())
 
-def rotate():
-  carr = [[] for _ in range(N)]
+data = [list(map(int,input().split())) for _ in range(n)]
 
-  for i in range(N):
-    carr[i]=arr[i][:]
+for _ in range(r):
+  for i in range(min(n, m) // 2):
+    x, y = i, i
+    temp = data[x][y]
+    
+    for j in range(i + 1, n - i): 
+      x = j
+      prev_value = data[x][y]
+      data[x][y] = temp
+      temp = prev_value
 
-  sr = 0; sc = 0; er = N - 1; ec = M - 1
-  for _ in range(min(M, N)//2):
-    r = sr
-    c = sc
-    for d in move:
-      while True:
-        nr = r + d[0]
-        nc = c + d[1]
-        if sr <= nr <= er and sc <= nc <= ec:
-          arr[nr][nc] = carr[r][c]
-          r = nr
-          c = nc
-        else:
-          break
-    sr+=1; sc+=1; er-=1; ec-=1
+    for j in range(i + 1, m - i):
+      y = j
+      prev_value = data[x][y]
+      data[x][y] = temp
+      temp = prev_value
 
-for r in range(R): 
-  rotate()
+    for j in range(i + 1, n - i):
+      x = n - j - 1
+      prev_value = data[x][y]
+      data[x][y] = temp
+      temp = prev_value
 
-for i in range(N):
-  print(*arr[i])
+    for j in range(i + 1, m - i):
+      y = m - j -1
+      prev_value = data[x][y]
+      data[x][y] = temp
+      temp = prev_value
+
+for i in data:
+  print(*i)
+
