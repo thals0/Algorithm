@@ -1,3 +1,5 @@
 def solution(money):
-    price = 5500
-    return [money//price, money%price]
+    ans = [0,0]
+    ans[0] = money//5500
+    ans[1] = money%5500
+    return ans
