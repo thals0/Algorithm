@@ -1,20 +1,22 @@
-import math
-
+from collections import deque
 def solution(progresses, speeds):
     answer = []
     cnt = 1
-    q = [math.ceil((100-p) / s) for p, s in zip(progresses, speeds)]
-    
+    q = deque()
+    for i in range(len(progresses)):
+        if (100-progresses[i]) % speeds[i] == 0:
+            q.append((100-progresses[i]) // speeds[i])
+        else:
+            q.append((100-progresses[i]) // speeds[i] + 1)
     while q:
-        v = q.pop(0)
-        lst = q[:]
+        v = q.popleft()
+        lst = list(q)
         for i in lst:
             if v >= i:
-                q.pop(0)
+                q.popleft()
                 cnt += 1
             else:
                 break
         answer.append(cnt)
         cnt = 1
-
     return answer
