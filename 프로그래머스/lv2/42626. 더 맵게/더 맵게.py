@@ -1,4 +1,4 @@
-from heapq import heapify, heappush, heappop
+from heapq import *
 def solution(scoville, K):
     answer = 0
     heapify(scoville)
