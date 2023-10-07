@@ -1,8 +1,8 @@
 def solution(arr):
-    stack = []
-    stack.append(arr[0])
-    for i in range(1, len(arr)):
-        if stack[-1] == arr[i]:
-            continue
-        stack.append(arr[i])
-    return stack
+    li=[]
+    for i in range(len(arr)-1):
+        if arr[i] != arr[i+1]:
+            li.append(arr[i]) 
+    li.append(arr[-1])
+    return li
+            
