@@ -1,8 +1,10 @@
 def solution(sizes):
-    w = []
-    h = []
-    for size in sizes:
-        w.append(max(size))
-        h.append(min(size))
-    answer = max(w)*max(h)
-    return answer
+    max_w, max_h = 0,0
+    for i in sizes:
+        i.sort()
+    for i in sizes:
+        if max_w < i[0]:
+            max_w = i[0]
+        if max_h < i[1]:
+            max_h = i[1]
+    return max_w * max_h
