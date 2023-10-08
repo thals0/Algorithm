@@ -1,4 +1,10 @@
 def solution(numbers):
-    numbers = list(map(str, numbers))
-    numbers.sort(key=lambda x: x * 3, reverse=True)
-    return str(int(''.join(numbers)))
+    answer = ''
+    arr = []
+    for i in numbers:
+        i = str(i) + str(i) + str(i)
+        arr.append(i)
+    arr.sort(reverse=True)
+    for i in arr:
+        answer += i[:len(i)//3]
+    return str(int(answer))
