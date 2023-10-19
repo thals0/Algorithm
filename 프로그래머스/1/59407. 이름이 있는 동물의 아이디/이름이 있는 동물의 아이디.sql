@@ -1,0 +1,6 @@
+SELECT ANIMAL_ID FROM ANIMAL_INS
+WHERE NAME IS NOT NULL
+ORDER BY ANIMAL_ID ASC
+
+# 이름이 있는 동물의 id 조회 
+# id는 오름차순 
