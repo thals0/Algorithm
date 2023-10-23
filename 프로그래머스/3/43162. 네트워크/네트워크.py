@@ -1,18 +1,17 @@
+from collections import deque
 def solution(n, computers):
     answer = 0
-
-    queue = []
+    q = deque()
     visited = []
-
-    for a in range(n):
-        if a not in visited:
-            queue.append(a)
+    for i in range(n):
+        if i not in visited:
+            q.append(i)
             answer += 1
-
-            while queue :
-                now = queue.pop(0)    
-                for i in range(n):
-                    if computers[now][i] == 1 and i not in visited:
-                        visited.append(i)
-                        queue.append(i)
+            
+            while q:
+                cur = q.popleft()
+                for j in range(n):
+                    if computers[cur][j] == 1 and j not in visited:
+                        q.append(j)
+                        visited.append(j)
     return answer
