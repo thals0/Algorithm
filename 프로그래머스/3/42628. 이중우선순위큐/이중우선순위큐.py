@@ -10,9 +10,9 @@ def solution(operations):
             if n == "-1":
                 heappop(q)
             else:
+                q.sort()
                 q.pop()
     if q:
-        q.sort()
-        return [q[-1], q[0]]
+        return [max(q), q[0]]
     else:
         return [0,0]
