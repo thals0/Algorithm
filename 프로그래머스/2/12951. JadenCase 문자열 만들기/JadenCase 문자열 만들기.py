@@ -1,9 +1,16 @@
 def solution(s):
-    arr = s.split(" ")
-    l = []
-    for i in arr:
-        if i != "":
-            l.append(i[0].upper() + i[1:].lower())
-        else:
-            l.append(i)
-    return ' '.join(l)
+    answer = ''
+    s = s.title()
+    
+    arr = list(s.split(' '))
+    for idx, word in enumerate(arr):
+        try:
+            int(word[0])
+            word = word[0] + word[1].lower() + word[2:]
+            del arr[idx]
+            arr.insert(idx, word)
+        except:
+            continue
+    
+    answer = ' '.join(arr)
+    return answer
