@@ -7,22 +7,27 @@ def solution(maps):
     
     q = deque()
     
+    def bfs(q, graph):
+        while q:
+            x,y = q.popleft()
+            for i in range(4):
+                nx = x + dx[i]
+                ny = y + dy[i]
+                if nx < 0 or nx >= len(maps) or ny < 0 or ny >= len(maps[0]):
+                    continue
+                if maps[nx][ny] != "X" and graph[nx][ny] == 0:
+                    graph[nx][ny] = graph[x][y] + 1
+                    q.append((nx,ny))
+        return graph
+    
+    
     # S -> L
     for i in range(len(maps)):
         for j in range(len(maps[0])):
             if maps[i][j] == "S":
                 q.append((i,j))
                 graph[i][j] = 1
-    while q:
-        x,y = q.popleft()
-        for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
-            if nx < 0 or nx >= len(maps) or ny < 0 or ny >= len(maps[0]):
-                continue
-            if maps[nx][ny] != "X" and graph[nx][ny] == 0:
-                graph[nx][ny] = graph[x][y] + 1
-                q.append((nx,ny))
+                graph = bfs(q, graph)
     
     x, y = -1,-1
     for i in range(len(maps)):
@@ -37,19 +42,9 @@ def solution(maps):
     if x != -1 and y != -1:
         q.append((x,y))
         graph[x][y] = 1
+        graph = bfs(q, graph)
     else:
         return -1
-    
-    while q:
-        x,y = q.popleft()
-        for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
-            if nx < 0 or nx >= len(maps) or ny < 0 or ny >= len(maps[0]):
-                continue
-            if maps[nx][ny] != "X" and graph[nx][ny] == 0:
-                graph[nx][ny] = graph[x][y] + 1
-                q.append((nx,ny))
     
     for i in range(len(maps)):
         for j in range(len(maps[0])):
@@ -57,6 +52,5 @@ def solution(maps):
                 return -1
             if maps[i][j] == "E":
                 answer += graph[i][j] -1
-                
     
     return answer
