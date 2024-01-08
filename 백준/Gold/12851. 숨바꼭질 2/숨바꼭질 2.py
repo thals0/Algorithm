@@ -6,15 +6,14 @@ q = deque()
 q.append(n)
 
 visited = [0] * 100001
-visited[n] = 0
 
 ans_count = 0
 ans_way = 0
+
 while q:
     x = q.popleft()
-    count = visited[x]
     if x == k:
-        ans_count = count
+        ans_count = visited[x]
         ans_way += 1
         continue
 
@@ -22,7 +21,7 @@ while q:
         if 0 <= nx < 100001:
             if visited[nx] == 0 or visited[nx] == visited[x] + 1:
                 q.append(nx)
-                visited[nx] = count + 1
+                visited[nx] = visited[x] + 1
 
 print(ans_count)
 print(ans_way)
