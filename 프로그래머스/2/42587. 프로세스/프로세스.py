@@ -1,18 +1,21 @@
 from collections import deque
 def solution(priorities, location):
-    q = deque()
     answer = 0
-    for i, val in enumerate(priorities):
-        q.append((i, val))
+    q = deque()
+    for i,p in enumerate(priorities):
+        q.append((p,i))
+    _max = q[0][0]
+    for i in range(len(q)):
+        _max = max(q[i][0], _max)
     while q:
-        _max = max(q, key= lambda x: x[1])[1]
-
-        cur = q.popleft()
-        if _max > cur[1]:
-            q.append(cur)
-        else:
+        p,idx = q.popleft()
+        if p == _max:
             answer += 1
-            if cur[0] == location:
+            if idx == location:
                 return answer
-        
-            
+            _max = -1
+            for i in range(len(q)):
+                _max = max(q[i][0], _max)
+        else:
+            q.append((p,idx))
+    return answer
